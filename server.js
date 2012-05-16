@@ -4,7 +4,7 @@ var ApiServer = require('apiserver')
 // Setup the server
 // http://kilianc.github.com/node-apiserver/
 var apiserver = new ApiServer({
-	port: process.env.PORT || 8080,
+	port: process.env.PORT || 3000,
 	server: http.createServer(),
 	standardHeaders: {
 		'cache-control': 'max-age=0, no-cache, no-store, must-revalidate',

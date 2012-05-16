@@ -12,7 +12,10 @@ var Dialog = module.exports = resourceful.define('dialog', function() {
 		case 'STAGE':
 		case 'PRODUCTION':
 			console.log('Module Design: using CouchDB');
-			that.use('couchdb');
+			that.use('couchdb', {
+				// uri: 'http://admin:informaat@informaat.iriscouch.com'
+				database: 'apiserver'
+			});
 			break;
 		default:
 			console.log('Module Design: using Memory Persistance');

@@ -1,10 +1,11 @@
 {
-  "author": "",
+  "author": "Garbrand van der Molen <garbrand@gmail.com>",
   "name": "ApiServer",
   "description": "Testing ApiServer as a replacement for Restify",
   "version": "0.0.0",
   "repository": {
-    "url": ""
+    "type": "git",
+    "url": "git@github.com:garbrand/ApiServer.git"
   },
   "engines": {
     "node": "~0.6.17"
