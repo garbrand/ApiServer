@@ -10,11 +10,16 @@
     "node": "~0.6.17"
   },
   "dependencies": {
-	"apiserver": "*",
-	"resourceful": "*"
-},
+    "apiserver": "*",
+    "resourceful": "*"
+  },
   "devDependencies": {
-	"mocha": "*",
-	"chai": "*"
-	}
+    "mocha": "*",
+    "chai": "*"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha"
+  },
+  "optionalDependencies": {}
 }
