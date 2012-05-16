@@ -2,6 +2,7 @@ var ApiServer = require('apiserver')
   , http = 		require('http');
 
 // Setup the server
+// http://kilianc.github.com/node-apiserver/
 var apiserver = new ApiServer({
 	port: process.env.PORT || 8080,
 	server: http.createServer(),
