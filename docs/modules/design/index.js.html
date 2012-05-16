@@ -1,0 +1,59 @@
+<!DOCTYPE html><html><head><title>index.js</title><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><link rel="stylesheet" media="all" href="../../docco.css"></head><body><div id="container"><div id="background"></div><div id="jump_to">Jump To &hellip;<div id="jump_wrapper"><div id="jump_page"><a href="../../index.html" class="source"><span class="file_name">README</span></a><a href="../../modules/design/index.js.html" class="source selected"><span class="base_path">modules / design / </span><span class="file_name">index.js</span></a><a href="../../modules/design/schema.dialog.js.html" class="source "><span class="base_path">modules / design / </span><span class="file_name">schema.dialog.js</span></a></div></div></div><table cellpadding="0" cellspacing="0"><thead><tr><th class="docs"><h1>index.js</h1><div class="filepath">modules/design/</div></th><th class="code"></th></tr></thead><tbody><tr id="section-1"><td class="docs"><div class="pilwrap"><a href="#section-1" class="pilcrow">&#182;</a></div><h1>Design module</h1>
+</td><td class="code"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">Design</span> <span class="o">=</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Adding module: Design&#39;</span><span class="p">);</span>
+  
+  <span class="kd">var</span> <span class="nx">Dialog</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./schema.dialog&#39;</span><span class="p">);</span>
+  </pre></div></td></tr><tr id="section-2"><td class="docs"><div class="pilwrap"><a href="#section-2" class="pilcrow">&#182;</a></div><p>Actions</p>
+</td><td class="code"><div class="highlight"><pre>  <span class="kd">var</span> <span class="nx">dialogs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">create</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">Dialog</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">dialog</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span> 
+          <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+          <span class="k">return</span> <span class="nx">error</span><span class="p">;</span>
+        <span class="p">};</span>
+        
+        <span class="nx">dialog</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span> 
+            <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error:&#39;</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">error</span><span class="p">;</span>
+          <span class="p">}</span></pre></div></td></tr><tr id="section-3"><td class="docs"><div class="pilwrap"><a href="#section-3" class="pilcrow">&#182;</a></div><p>callback(error, dialog);</p>
+</td><td class="code"><div class="highlight"><pre>          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Saved dialog:&#39;</span><span class="p">,</span> <span class="nx">dialog</span><span class="p">);</span>
+          <span class="nx">callback</span><span class="p">(</span><span class="nx">dialog</span><span class="p">);</span>
+        <span class="p">});</span>
+      <span class="p">});</span>
+    <span class="p">},</span>
+    
+    <span class="nx">all</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">Dialog</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">items</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">callback</span><span class="p">(</span><span class="nx">items</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+  
+  
+  </pre></div></td></tr><tr id="section-4"><td class="docs"><div class="pilwrap"><a href="#section-4" class="pilcrow">&#182;</a></div><p>Define the routes</p>
+</td><td class="code"><div class="highlight"><pre>  <span class="kd">var</span> <span class="nx">routes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">api</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">request</span><span class="p">);</span>
+      <span class="nx">response</span><span class="p">.</span><span class="nx">serveJSON</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">method</span><span class="p">);</span></pre></div></td></tr><tr id="section-5"><td class="docs"><div class="pilwrap"><a href="#section-5" class="pilcrow">&#182;</a></div><p>request.method == GET || POST
+request.querystring are the parameters as JSON</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="p">},</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><p>Dialogs</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="nx">dialogs</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><p>We can respond to <code>request.method == GET</code></p>
+</td><td class="code"><div class="highlight"><pre>      <span class="nx">dialogs</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">items</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">serveJSON</span><span class="p">(</span><span class="nx">items</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">},</span></pre></div></td></tr><tr id="section-8"><td class="docs"><div class="pilwrap"><a href="#section-8" class="pilcrow">&#182;</a></div><p>Populating the DB quickly</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="nx">stub</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">dialog</span> <span class="o">=</span> <span class="nx">dialogs</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+        <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Stub&#39;</span><span class="p">,</span>
+        <span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;Creating a stub dialog&#39;</span><span class="p">,</span>
+        <span class="nx">composition</span><span class="o">:</span> <span class="p">[]</span>
+      <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">serveJSON</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">};</span></pre></div></td></tr><tr id="section-9"><td class="docs"><div class="pilwrap"><a href="#section-9" class="pilcrow">&#182;</a></div><p>Return the routes</p>
+</td><td class="code"><div class="highlight"><pre>  <span class="k">return</span> <span class="nx">routes</span><span class="p">;</span>
+<span class="p">})();</span>
+
+</pre></div></td></tr></tbody></table><div id="generated">generated Wed May 16 2012 23:57:50 GMT+0200 (CEST)  </div></div></body></html>
