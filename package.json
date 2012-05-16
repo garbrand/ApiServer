@@ -1,0 +1,20 @@
+{
+  "author": "",
+  "name": "ApiServer",
+  "description": "Testing ApiServer as a replacement for Restify",
+  "version": "0.0.0",
+  "repository": {
+    "url": ""
+  },
+  "engines": {
+    "node": "~0.6.17"
+  },
+  "dependencies": {
+	"apiserver": "*",
+	"resourceful": "*"
+},
+  "devDependencies": {
+	"mocha": "*",
+	"chai": "*"
+	}
+}
