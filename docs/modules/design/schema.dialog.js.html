@@ -11,17 +11,17 @@ https://github.com/flatiron/resourceful</p>
     <span class="k">case</span> <span class="s1">&#39;STAGE&#39;</span><span class="o">:</span>
     <span class="k">case</span> <span class="s1">&#39;PRODUCTION&#39;</span><span class="o">:</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Module Design: using CouchDB&#39;</span><span class="p">);</span>
-      <span class="nx">that</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;couchdb&#39;</span><span class="p">,</span> <span class="p">{</span></pre></div></td></tr><tr id="section-3"><td class="docs"><div class="pilwrap"><a href="#section-3" class="pilcrow">&#182;</a></div><p>uri: 'http://admin:informaat@informaat.iriscouch.com'</p>
-</td><td class="code"><div class="highlight"><pre>        <span class="nx">database</span><span class="o">:</span> <span class="s1">&#39;apiserver&#39;</span>
+      <span class="nx">that</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;couchdb&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">database</span><span class="o">:</span> <span class="s1">&#39;apiserver&#39;</span>
       <span class="p">});</span>
       <span class="k">break</span><span class="p">;</span>
     <span class="k">default</span><span class="o">:</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Module Design: using Memory Persistance&#39;</span><span class="p">);</span>
       <span class="nx">that</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;memory&#39;</span><span class="p">);</span>
-  <span class="p">}</span></pre></div></td></tr><tr id="section-4"><td class="docs"><div class="pilwrap"><a href="#section-4" class="pilcrow">&#182;</a></div><p>Schema</p>
+  <span class="p">}</span></pre></div></td></tr><tr id="section-3"><td class="docs"><div class="pilwrap"><a href="#section-3" class="pilcrow">&#182;</a></div><p>Schema</p>
 </td><td class="code"><div class="highlight"><pre>  <span class="k">this</span><span class="p">.</span><span class="nx">string</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">);</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">string</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">);</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">array</span><span class="p">(</span><span class="s1">&#39;composition&#39;</span><span class="p">);</span>
 <span class="p">});</span>
 
-</pre></div></td></tr></tbody></table><div id="generated">generated Wed May 16 2012 23:57:50 GMT+0200 (CEST)  </div></div></body></html>
+</pre></div></td></tr></tbody></table><div id="generated">generated Thu May 17 2012 11:11:43 GMT+0200 (CEST)  </div></div></body></html>
