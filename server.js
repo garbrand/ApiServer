@@ -1,3 +1,5 @@
+"use srtrict";
+
 var ApiServer = require('apiserver')
   , http = 		require('http');
 
@@ -28,4 +30,3 @@ apiserver.listen( function(error) {
 		console.log('ApiServer bound to port: %s', apiserver.port);
 	}
 });
-

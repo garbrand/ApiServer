@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Centered Viewport</title>
+	<meta name="author" content="Garbrand van der Molen">
+	
+	<style type="text/css" media="screen">
+		html * {
+			margin: 0; padding: 0;
+		}
+		
+		/* Positioning */
+		.pinned {
+			position: absolute;
+			overflow: auto;
+		}
+		
+			.sides { 		right: 0; left: 0; }
+			.heights {		top: 0; bottom: 0; }
+		
+		#viewport {
+			background: url('images/canvas.png') #858792;
+		}
+		
+		.ui-resizable-handle {
+			position: absolute;
+			top: 0; bottom: 0;
+			width: 5px;
+			background: #eee;
+		}
+		
+		/*
+		.ui-resizable-handle:hover,
+		.ui-resizable-handle:active {
+			background: green;
+		}
+		*/
+		
+			.ui-resizable-e { 	right: 0; }
+			.ui-resizable-w { 	left:  0; }
+		
+		#canvas {
+			background: #fff;
+			width: 100%;
+			box-shadow: 0 0 16px #333;
+/*			-webkit-transition-property: width margin position;*/
+/*			-webkit-transition: all 0.5s ease-in-out;*/
+		}
+	</style>
+</head>
+<body>
+	<div id="viewport" class="pinned sides heights">
+		<div id="canvas" class="pinned heights"></div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script src="lib/viewport.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script type="text/javascript" charset="utf-8">
+		$(function() {
+			viewport = new Viewport();
+			viewport.init();
+		});
+	</script>
+</body>
+</html>

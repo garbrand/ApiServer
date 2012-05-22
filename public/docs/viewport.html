@@ -1,0 +1,79 @@
+<!DOCTYPE html>  <html> <head>   <title>viewport.js</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               viewport.js             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>               <p>viewport.js
+ ApiServer</p>
+
+<p>Created by Garbrand van der Molen on 2012-05-22.
+ Copyright 2012 Informaat IPE BV. All rights reserved.</p>             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <h1>Viewport</h1>
+
+<p>Create a viewport, that can either be resized manually or set to simulate a device such as a tablet. 
+This allows us to evaluate a design as it would render on a device.</p>
+
+<h2>Basic usage:</h2>
+
+<pre><code>var viewport = new Viewport();
+viewport.init();
+viewport.simulate('iphone3');
+</code></pre>             </td>             <td class="code">               <div class="highlight"><pre><span class="kd">function</span> <span class="nx">Viewport</span><span class="p">()</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <h1>Cached selectors</h1>             </td>             <td class="code">               <div class="highlight"><pre>	<span class="kd">var</span> <span class="nx">$viewport</span> <span class="o">=</span> 	<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#viewport&#39;</span><span class="p">);</span>
+	<span class="kd">var</span> <span class="nx">$canvas</span> <span class="o">=</span> 		<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#canvas&#39;</span><span class="p">);</span>
+	<span class="kd">var</span> <span class="nx">$handle</span> <span class="o">=</span> 		<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.handle&#39;</span><span class="p">);</span>
+	
+	</pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <h1>Model</h1>             </td>             <td class="code">               <div class="highlight"><pre>	<span class="kd">var</span> <span class="nx">model</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="nx">devices</span><span class="o">:</span> <span class="p">{</span>
+			  <span class="s1">&#39;iphone3&#39;</span><span class="o">:</span> <span class="p">{</span><span class="nx">width</span><span class="o">:</span> <span class="mi">320</span><span class="p">,</span> <span class="nx">height</span><span class="o">:</span> <span class="mi">480</span><span class="p">,</span> <span class="nx">flip</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span>
+			<span class="p">,</span> <span class="s1">&#39;iphone4&#39;</span><span class="o">:</span> <span class="p">{</span><span class="nx">width</span><span class="o">:</span> <span class="mi">640</span><span class="p">,</span> <span class="nx">height</span><span class="o">:</span> <span class="mi">960</span><span class="p">,</span> <span class="nx">flip</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span>
+			<span class="p">,</span> <span class="s1">&#39;tablet&#39;</span><span class="o">:</span> <span class="p">{</span><span class="nx">width</span><span class="o">:</span> <span class="mi">1024</span><span class="p">,</span> <span class="nx">height</span><span class="o">:</span> <span class="mi">768</span><span class="p">,</span> <span class="nx">flip</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span>
+			<span class="p">,</span> <span class="s1">&#39;desktop&#39;</span><span class="o">:</span> <span class="p">{</span><span class="nx">width</span><span class="o">:</span> <span class="mi">1366</span><span class="p">,</span> <span class="nx">height</span><span class="o">:</span> <span class="mi">768</span><span class="p">,</span> <span class="nx">flip</span><span class="o">:</span> <span class="kc">false</span><span class="p">}</span>
+		<span class="p">}</span>
+		
+		<span class="p">,</span> <span class="nx">flipDevice</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">device</span><span class="p">)</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-5">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-5">&#182;</a>               </div>               <p>TODO: Flip <code>width</code> and <code>height</code> in the model of the given <code>device</code>
+model.devices[device];</p>             </td>             <td class="code">               <div class="highlight"><pre>		<span class="p">}</span>
+	<span class="p">};</span>
+	
+	</pre></div>             </td>           </tr>                               <tr id="section-6">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-6">&#182;</a>               </div>               <h1>View</h1>             </td>             <td class="code">               <div class="highlight"><pre>	<span class="kd">var</span> <span class="nx">view</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="nx">template</span><span class="o">:</span> <span class="p">{</span>
+			<span class="nx">option</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">device</span><span class="p">,</span> <span class="nx">selected</span><span class="p">)</span> <span class="p">{</span>
+				<span class="k">return</span> <span class="s1">&#39;&lt;option&#39;</span> <span class="o">+</span> <span class="nx">device</span> <span class="o">==</span> <span class="nx">selected</span> <span class="o">?</span> <span class="s1">&#39; selected=true&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="s1">&#39;&gt;&#39;</span> <span class="o">+</span> <span class="nx">device</span> <span class="o">+</span> <span class="s1">&#39;&lt;/option&gt;&#39;</span><span class="p">;</span>
+			<span class="p">},</span>
+			<span class="nx">select</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+				<span class="k">return</span> <span class="s1">&#39;&lt;select&gt;&lt;/select&gt;&#39;</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">};</span>
+	
+	</pre></div>             </td>           </tr>                               <tr id="section-7">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-7">&#182;</a>               </div>               <h1>Controller</h1>             </td>             <td class="code">               <div class="highlight"><pre>	<span class="kd">var</span> <span class="nx">controller</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="nx">resize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">ui</span><span class="p">)</span> <span class="p">{</span>
+			<span class="nx">$canvas</span><span class="p">.</span><span class="nx">resizable</span><span class="p">({</span>
+				<span class="nx">handles</span><span class="o">:</span> <span class="s1">&#39;e, w&#39;</span>
+				<span class="p">,</span> <span class="nx">resize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">ui</span><span class="p">)</span> <span class="p">{</span>
+					<span class="kd">var</span> <span class="nx">$this</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+					<span class="kd">var</span> <span class="nx">width</span> <span class="o">=</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">width</span><span class="p">();</span>
+					
+					<span class="nx">controller</span><span class="p">.</span><span class="nx">setWidth</span><span class="p">(</span><span class="nx">width</span><span class="p">);</span>
+				<span class="p">}</span>
+			<span class="p">});</span>
+		<span class="p">}</span>
+		<span class="p">,</span> <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-8">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-8">&#182;</a>               </div>               <p>Hook up the events</p>             </td>             <td class="code">               <div class="highlight"><pre>			<span class="nx">controller</span><span class="p">.</span><span class="nx">resize</span><span class="p">();</span>
+		<span class="p">}</span>
+		
+		<span class="p">,</span> <span class="nx">setWidth</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">width</span><span class="p">)</span> <span class="p">{</span>
+			<span class="kd">var</span> <span class="nx">margin</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span> <span class="nx">width</span><span class="o">/</span><span class="mi">2</span> <span class="p">)</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+			
+			<span class="k">return</span> <span class="nx">$canvas</span><span class="p">.</span><span class="nx">css</span><span class="p">({</span>
+				  <span class="nx">width</span><span class="o">:</span> <span class="nx">width</span>
+				<span class="p">,</span> <span class="s2">&quot;margin-left&quot;</span><span class="o">:</span> <span class="nx">margin</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span>
+				<span class="p">,</span> <span class="nx">left</span><span class="o">:</span> <span class="s1">&#39;50%&#39;</span>
+			<span class="p">});</span>	
+		<span class="p">}</span>
+		
+		<span class="p">,</span> <span class="nx">simulate</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">device</span><span class="p">)</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-9">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-9">&#182;</a>               </div>               <p>Takes a <code>device</code> as a string, applies the associated size in <code>model.devices</code></p>             </td>             <td class="code">               <div class="highlight"><pre>			<span class="k">return</span> <span class="nx">controller</span><span class="p">.</span><span class="nx">setWidth</span><span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="nx">devices</span><span class="p">[</span><span class="nx">device</span><span class="p">].</span><span class="nx">width</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">};</span>
+	
+	</pre></div>             </td>           </tr>                               <tr id="section-10">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-10">&#182;</a>               </div>               <h1>API</h1>             </td>             <td class="code">               <div class="highlight"><pre>	<span class="kd">var</span> <span class="nx">api</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="nx">init</span><span class="o">:</span> <span class="nx">controller</span><span class="p">.</span><span class="nx">init</span><span class="p">,</span>
+		<span class="nx">simulate</span><span class="o">:</span> <span class="nx">controller</span><span class="p">.</span><span class="nx">simulate</span>
+	<span class="p">};</span>
+	
+	<span class="k">return</span> <span class="nx">api</span><span class="p">;</span>
+<span class="p">};</span>
+
+</pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 
