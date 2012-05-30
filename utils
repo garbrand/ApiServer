@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+
+var opt = require('opt')
+  , args;
+
+function test(param) {
+	if (param) {
+		console.log('--test parameter:', param);
+	} else {
+		console.log('No parameter supplied to --test');
+	}
+};
+
+opt.setup('Simple test script.');
+opt.set(['-h', '--help'], opt.usage, 'Show help');
+opt.set(['-t', '--test'], test, 'Run test');
+
+opt.parse(process.argv);

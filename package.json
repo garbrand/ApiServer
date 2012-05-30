@@ -12,11 +12,13 @@
   },
   "dependencies": {
     "apiserver": "*",
-    "resourceful": "*"
+    "resourceful": "*",
+    "sqlite3": "*"
   },
   "devDependencies": {
     "mocha": "*",
-    "chai": "*"
+    "chai": "*",
+	"opt": "*"
   },
   "scripts": {
     "start": "node server.js",
