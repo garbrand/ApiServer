@@ -3,3 +3,5 @@
 # ApiServer
 
 Playing around with ApiServer and Resourceful, GitHub and Travis, Mocha and Husky-Docco.
+
+Documentation served up on Github, documents edited with Prose.
