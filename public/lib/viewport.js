@@ -27,15 +27,24 @@ function Viewport() {
 	var model = {
 		  current: 'none'
 		, devices: {
-			  'iphone3': {width: 320, height: 480, flip: true}
-			, 'iphone4': {width: 640, height: 960, flip: true}
-			, 'tablet': {width: 1024, height: 768, flip: true}
-			, 'desktop': {width: 1366, height: 768, flip: false}
+			  'iphone3': { width: 320,  height: 480, flip: true }
+			, 'iphone4': { width: 640,  height: 960, flip: true }
+			, 'tablet':  { width: 1024, height: 768, flip: true }
+			, 'desktop': { width: 1366, height: 768, flip: false}
 		}
 		
 		, flipDevice: function(device) {
-			// TODO: Flip `width` and `height` in the model of the given `device`
-			// model.devices[device];
+			var dev = model.devices[device];
+			var flip = [];
+
+			flip.push(dev.width);
+			flip.push(dev.height);
+			
+			dev.width = flip[1];
+			dev.height = flip[0];
+			dev.flip = !dev.flip;
+			
+			return controller.simulate(device);
 		}
 	};
 	
@@ -81,9 +90,16 @@ function Viewport() {
 			});	
 		}
 		
+		, setHeight: function(height) {
+			return $canvas.css({
+				height: height + 'px'
+			});
+		}
+		
 		, simulate: function(device) {
 			// Takes a `device` as a string, applies the associated size in `model.devices`
 			controller.setWidth(model.devices[device].width);
+			controller.setHeight(model.devices[device].height);
 			return model.current = device;
 		}
 	};
@@ -91,8 +107,9 @@ function Viewport() {
 	
 	// # API
 	var api = {
-		init: controller.init,
-		simulate: controller.simulate
+		init: controller.init
+		, simulate: controller.simulate
+		, flip: model.flipDevice
 	};
 	
 	return api;
